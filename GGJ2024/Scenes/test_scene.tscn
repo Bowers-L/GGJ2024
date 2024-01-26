@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxmqivnjtqlqy"]
+
+[sub_resource type="EventAsset" id="EventAsset_irc43"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Test/Test_Event"
+guid = "{9fad0854-d8b3-479a-8d33-885f428754b9}"
+name = "Test_Event"
+
+[node name="TestScene" type="Node2D"]
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 1
+stop_event = 3
+event = SubResource("EventAsset_irc43")
