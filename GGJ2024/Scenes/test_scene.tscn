@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=9 format=3 uid="uid://bxmqivnjtqlqy"]
+
+[ext_resource type="Script" path="res://Scripts/FrictionPinJoint2D.gd" id="1_afs2x"]
 
 [sub_resource type="EventAsset" id="EventAsset_irc43"]
 is_oneshot = true
@@ -8,9 +10,163 @@ path = "event:/Test/Test_Event"
 guid = "{9fad0854-d8b3-479a-8d33-885f428754b9}"
 name = "Test_Event"
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_irb3x"]
+radius = 37.0
+height = 166.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jiaer"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmu7y"]
+radius = 25.0
+height = 108.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j1i2i"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygqav"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1mew"]
+size = Vector2(514, 56)
+
 [node name="TestScene" type="Node2D"]
 
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
 play_event = 1
 stop_event = 3
 event = SubResource("EventAsset_irc43")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(218, 123)
+
+[node name="Body" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(0, -1.52588e-05)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Body"]
+shape = SubResource("CapsuleShape2D_irb3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/Body"]
+scale = Vector2(0.134896, 0.295928)
+texture = SubResource("NoiseTexture2D_jiaer")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(37, 96)
+rotation = -0.390106
+collision_mask = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D"]
+position = Vector2(-2.41274, -38.8353)
+rotation = 0.390106
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D"]
+shape = SubResource("CapsuleShape2D_gmu7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/RigidBody2D"]
+scale = Vector2(0.106943, 0.202762)
+texture = SubResource("NoiseTexture2D_jiaer")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(-35, 98)
+rotation = 0.42523
+collision_mask = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D2"]
+position = Vector2(-2.41274, -38.8353)
+rotation = 0.390106
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D2"]
+shape = SubResource("CapsuleShape2D_gmu7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/RigidBody2D2"]
+scale = Vector2(0.106943, 0.202762)
+texture = SubResource("NoiseTexture2D_jiaer")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(53, 174)
+collision_mask = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D3"]
+position = Vector2(-2.41274, -38.8353)
+rotation = 0.390106
+node_a = NodePath("../../RigidBody2D")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D3"]
+shape = SubResource("CapsuleShape2D_gmu7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/RigidBody2D3"]
+scale = Vector2(0.106943, 0.202762)
+texture = SubResource("NoiseTexture2D_jiaer")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(-48, 176)
+collision_mask = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D4"]
+position = Vector2(-2.41274, -38.8353)
+rotation = 0.390106
+node_a = NodePath("../../RigidBody2D2")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D4"]
+shape = SubResource("CapsuleShape2D_gmu7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2/RigidBody2D4"]
+scale = Vector2(0.106943, 0.202762)
+texture = SubResource("NoiseTexture2D_jiaer")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(53, 205)
+collision_mask = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_j1i2i")
+lock_rotation = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D5"]
+position = Vector2(-1.90735e-06, -1.52588e-05)
+rotation = 0.390106
+node_a = NodePath("../../RigidBody2D3")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D5"]
+shape = SubResource("RectangleShape2D_ygqav")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="Node2D2"]
+position = Vector2(-48, 207)
+collision_mask = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_j1i2i")
+lock_rotation = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D2/RigidBody2D6"]
+position = Vector2(-1.90735e-06, -1.52588e-05)
+rotation = 0.390106
+node_a = NodePath("../../RigidBody2D4")
+node_b = NodePath("..")
+script = ExtResource("1_afs2x")
+angular_friction = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RigidBody2D6"]
+shape = SubResource("RectangleShape2D_ygqav")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(227, 395)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_s1mew")
