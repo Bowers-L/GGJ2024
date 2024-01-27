@@ -15,10 +15,11 @@ radius = 25.0
 height = 108.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j1i2i"]
+friction = 0.15
 rough = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygqav"]
-size = Vector2(50, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3q63v"]
+radius = 25.0
 
 [node name="Kaiju" type="Node2D" node_paths=PackedStringArray("left_foot", "right_foot")]
 script = ExtResource("1_rbh6s")
@@ -46,6 +47,7 @@ position = Vector2(-2.41274, -38.8353)
 rotation = 0.390106
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("1_yik47")
 spring_k = 10
 
@@ -66,6 +68,7 @@ position = Vector2(-2.41274, -38.8353)
 rotation = 0.390106
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("1_yik47")
 spring_k = 10
 
@@ -85,6 +88,7 @@ position = Vector2(-2.41274, -38.8353)
 rotation = 0.390106
 node_a = NodePath("../../Upper Right Leg")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("1_yik47")
 target_direction = 45
 spring_k = 10
@@ -105,6 +109,7 @@ position = Vector2(-2.41274, -38.8353)
 rotation = 0.390106
 node_a = NodePath("../../Upper Left Leg")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("1_yik47")
 target_direction = -45
 spring_k = 10
@@ -119,7 +124,7 @@ texture = SubResource("NoiseTexture2D_jiaer")
 [node name="Right Foot" type="RigidBody2D" parent="."]
 position = Vector2(53, 205)
 collision_mask = 2
-mass = 1000.0
+mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_j1i2i")
 lock_rotation = true
 
@@ -128,16 +133,17 @@ position = Vector2(-1.90735e-06, -1.52588e-05)
 rotation = 0.390106
 node_a = NodePath("../../Lower Right Leg")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("2_tscmr")
 angular_friction = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Foot"]
-shape = SubResource("RectangleShape2D_ygqav")
+shape = SubResource("CircleShape2D_3q63v")
 
 [node name="Left Foot" type="RigidBody2D" parent="."]
 position = Vector2(-48, 207)
 collision_mask = 2
-mass = 1000.0
+mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_j1i2i")
 lock_rotation = true
 
@@ -146,8 +152,9 @@ position = Vector2(-1.90735e-06, -1.52588e-05)
 rotation = 0.390106
 node_a = NodePath("../../Lower Left Leg")
 node_b = NodePath("..")
+softness = 0.5
 script = ExtResource("2_tscmr")
 angular_friction = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Foot"]
-shape = SubResource("RectangleShape2D_ygqav")
+shape = SubResource("CircleShape2D_3q63v")

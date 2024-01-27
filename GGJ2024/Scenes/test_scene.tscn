@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=5 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 
@@ -10,8 +10,11 @@ path = "event:/Test/Test_Event"
 guid = "{9fad0854-d8b3-479a-8d33-885f428754b9}"
 name = "Test_Event"
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ew1jb"]
+friction = 0.1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1mew"]
-size = Vector2(514, 56)
+size = Vector2(1117, 56)
 
 [node name="TestScene" type="Node2D"]
 
@@ -25,6 +28,8 @@ position = Vector2(108, 128)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(227, 395)
 collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_ew1jb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(301.5, 0)
 shape = SubResource("RectangleShape2D_s1mew")
