@@ -1,25 +1,52 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4arnhyqsfr1t"]
+[gd_scene load_steps=21 format=3 uid="uid://d4arnhyqsfr1t"]
 
 [ext_resource type="Script" path="res://Scripts/Kaiju.gd" id="1_rbh6s"]
 [ext_resource type="Script" path="res://Scripts/SpringyPinJoint.gd" id="1_yik47"]
-[ext_resource type="Script" path="res://Scripts/FrictionPinJoint2D.gd" id="2_tscmr"]
+[ext_resource type="Texture2D" uid="uid://brcmn175768gu" path="res://Sprites/Kaiju/Body/BODY.png" id="2_rgrj0"]
+[ext_resource type="Texture2D" uid="uid://667mjylggkm2" path="res://Sprites/Kaiju/Head/HEADNORM.png" id="3_6e2c5"]
+[ext_resource type="Texture2D" uid="uid://cphhxkyq03qii" path="res://Sprites/Kaiju/Legs/RThigh.png" id="4_vpsp5"]
+[ext_resource type="Texture2D" uid="uid://dnh3a5bwtcjl3" path="res://Sprites/Kaiju/Legs/LThigh.png" id="5_vcggf"]
+[ext_resource type="Texture2D" uid="uid://cbrq8n67i0p5r" path="res://Sprites/Kaiju/Legs/RCalf.png" id="6_iyodm"]
+[ext_resource type="Texture2D" uid="uid://dmd5cs5yv7wi5" path="res://Sprites/Kaiju/Legs/LCalf.png" id="7_jek3b"]
+[ext_resource type="Texture2D" uid="uid://cb4q153hnxpvv" path="res://Sprites/Kaiju/Legs/RFoot.png" id="9_x4t44"]
+[ext_resource type="Texture2D" uid="uid://dqokw4yiw42y7" path="res://Sprites/Kaiju/Legs/LFoot.png" id="10_m3u2e"]
+[ext_resource type="Texture2D" uid="uid://bh0puhyhbvi05" path="res://Sprites/Kaiju/Kaiju Assembled.png" id="11_f61lc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_irb3x"]
-radius = 37.0
-height = 166.0
+radius = 38.2076
+height = 124.766
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jiaer"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cn55t"]
+radius = 27.6578
+height = 116.218
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmu7y"]
-radius = 25.0
-height = 108.0
+radius = 22.3046
+height = 71.9515
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdcpr"]
+radius = 25.0756
+height = 78.6295
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6boeu"]
+radius = 19.8982
+height = 57.7211
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6go5b"]
+radius = 19.3114
+height = 55.0115
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j1i2i"]
 friction = 0.15
 rough = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3q63v"]
-radius = 25.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obgqs"]
+radius = 10.1968
+height = 70.8937
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1m25l"]
+radius = 11.1751
+height = 71.0063
 
 [node name="Kaiju" type="Node2D" node_paths=PackedStringArray("left_foot", "right_foot")]
 script = ExtResource("1_rbh6s")
@@ -31,130 +58,198 @@ position = Vector2(0, -1.52588e-05)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+z_index = 2
+position = Vector2(2, 15)
+rotation = -0.0937026
 shape = SubResource("CapsuleShape2D_irb3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
-scale = Vector2(0.134896, 0.295928)
-texture = SubResource("NoiseTexture2D_jiaer")
+position = Vector2(0, 2.00002)
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("2_rgrj0")
+
+[node name="Head" type="RigidBody2D" parent="."]
+position = Vector2(32, -41)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+z_index = 2
+position = Vector2(1, 17)
+rotation = -1.35979
+shape = SubResource("CapsuleShape2D_cn55t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+position = Vector2(0, 2.00002)
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("3_6e2c5")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Head"]
+position = Vector2(-31, 7)
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+script = ExtResource("1_yik47")
+unrestrained_degrees = 2
+spring_k = 20
+angular_friction = 40000.0
 
 [node name="Upper Right Leg" type="RigidBody2D" parent="."]
-position = Vector2(37, 96)
-rotation = -0.390106
+position = Vector2(41, 89)
+scale = Vector2(0.984402, 0.984402)
 collision_mask = 2
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Upper Right Leg"]
-position = Vector2(-2.41274, -38.8353)
-rotation = 0.390106
+position = Vector2(-10.2953, -30.174)
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
-softness = 0.5
 script = ExtResource("1_yik47")
-spring_k = 10
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Right Leg"]
+position = Vector2(-6.01829, -1.40076)
+rotation = -0.0237044
 shape = SubResource("CapsuleShape2D_gmu7y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Upper Right Leg"]
-scale = Vector2(0.106943, 0.202762)
-texture = SubResource("NoiseTexture2D_jiaer")
+z_index = -1
+position = Vector2(-5.8893, -3.42835)
+rotation = 0.018554
+scale = Vector2(0.245594, 0.245594)
+texture = ExtResource("4_vpsp5")
 
 [node name="Upper Left Leg" type="RigidBody2D" parent="."]
-position = Vector2(-35, 98)
-rotation = 0.42523
+position = Vector2(-27, 84)
 collision_mask = 2
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Upper Left Leg"]
-position = Vector2(-2.41274, -38.8353)
+position = Vector2(14.8103, -26.1085)
 rotation = 0.390106
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
-softness = 0.5
 script = ExtResource("1_yik47")
-spring_k = 10
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Left Leg"]
-shape = SubResource("CapsuleShape2D_gmu7y")
+z_index = 2
+position = Vector2(1.99267, -1.01453)
+rotation = 0.421198
+shape = SubResource("CapsuleShape2D_jdcpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Upper Left Leg"]
-scale = Vector2(0.106943, 0.202762)
-texture = SubResource("NoiseTexture2D_jiaer")
+position = Vector2(1.97082, -4.01445)
+scale = Vector2(0.241757, 0.241757)
+texture = ExtResource("5_vcggf")
 
 [node name="Lower Right Leg" type="RigidBody2D" parent="."]
-position = Vector2(53, 174)
+position = Vector2(35, 125)
 collision_mask = 2
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Lower Right Leg"]
-position = Vector2(-2.41274, -38.8353)
+position = Vector2(1.67251, -16.0375)
 rotation = 0.390106
 node_a = NodePath("../../Upper Right Leg")
 node_b = NodePath("..")
-softness = 0.5
 script = ExtResource("1_yik47")
-target_direction = 45
-spring_k = 10
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lower Right Leg"]
-shape = SubResource("CapsuleShape2D_gmu7y")
+z_index = 2
+z_as_relative = false
+position = Vector2(-0.0204381, -0.999791)
+rotation = 0.237941
+shape = SubResource("CapsuleShape2D_6boeu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lower Right Leg"]
-scale = Vector2(0.106943, 0.202762)
-texture = SubResource("NoiseTexture2D_jiaer")
+rotation = 0.00421802
+scale = Vector2(0.23702, 0.23702)
+texture = ExtResource("6_iyodm")
+flip_h = true
 
 [node name="Lower Left Leg" type="RigidBody2D" parent="."]
-position = Vector2(-48, 176)
+position = Vector2(-31, 124)
 collision_mask = 2
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Lower Left Leg"]
-position = Vector2(-2.41274, -38.8353)
+position = Vector2(-1, -16)
 rotation = 0.390106
 node_a = NodePath("../../Upper Left Leg")
 node_b = NodePath("..")
-softness = 0.5
 script = ExtResource("1_yik47")
-target_direction = -45
-spring_k = 10
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lower Left Leg"]
-shape = SubResource("CapsuleShape2D_gmu7y")
+z_index = 2
+rotation = -0.357188
+shape = SubResource("CapsuleShape2D_6go5b")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lower Left Leg"]
-scale = Vector2(0.106943, 0.202762)
-texture = SubResource("NoiseTexture2D_jiaer")
+scale = Vector2(0.236464, 0.236464)
+texture = ExtResource("7_jek3b")
 
 [node name="Right Foot" type="RigidBody2D" parent="."]
-position = Vector2(53, 205)
+position = Vector2(53, 164)
 collision_mask = 2
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_j1i2i")
-lock_rotation = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Right Foot"]
-position = Vector2(-1.90735e-06, -1.52588e-05)
+position = Vector2(-22, -6)
 rotation = 0.390106
 node_a = NodePath("../../Lower Right Leg")
 node_b = NodePath("..")
-softness = 0.5
-script = ExtResource("2_tscmr")
-angular_friction = 100.0
+bias = 0.5
+script = ExtResource("1_yik47")
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Foot"]
-shape = SubResource("CircleShape2D_3q63v")
+z_index = 1
+position = Vector2(0, -1.19209e-07)
+rotation = -1.46907
+shape = SubResource("CapsuleShape2D_obgqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Right Foot"]
+scale = Vector2(0.239358, 0.239358)
+texture = ExtResource("9_x4t44")
 
 [node name="Left Foot" type="RigidBody2D" parent="."]
-position = Vector2(-48, 207)
+position = Vector2(-49, 163)
 collision_mask = 2
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_j1i2i")
-lock_rotation = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Left Foot"]
-position = Vector2(-1.90735e-06, -1.52588e-05)
+position = Vector2(26, -7)
 rotation = 0.390106
 node_a = NodePath("../../Lower Left Leg")
 node_b = NodePath("..")
-softness = 0.5
-script = ExtResource("2_tscmr")
-angular_friction = 100.0
+bias = 0.5
+script = ExtResource("1_yik47")
+unrestrained_degrees = 12
+spring_k = 8
+angular_friction = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Foot"]
-shape = SubResource("CircleShape2D_3q63v")
+z_index = 1
+position = Vector2(-1, -1)
+rotation = 1.42147
+shape = SubResource("CapsuleShape2D_1m25l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left Foot"]
+scale = Vector2(0.240436, 0.240436)
+texture = ExtResource("10_m3u2e")
+
+[node name="KaijuAssembled" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.207843)
+position = Vector2(-41, -13)
+scale = Vector2(0.535053, 0.535053)
+texture = ExtResource("11_f61lc")
+offset = Vector2(40.7941, 111.037)

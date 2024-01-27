@@ -33,3 +33,7 @@ physics_material_override = SubResource("PhysicsMaterial_ew1jb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(301.5, 0)
 shape = SubResource("RectangleShape2D_s1mew")
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D"]
+position = Vector2(52, -156)
+zoom = Vector2(1.34, 1.34)
