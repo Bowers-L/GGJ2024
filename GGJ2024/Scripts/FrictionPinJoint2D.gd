@@ -23,14 +23,19 @@ func _physics_process(delta):
 	var omega_rel_dir = sign(omega_rel)
 	
 	#a.apply_torque(20000)
-	a.apply_torque(omega_rel * angular_friction)
-	b.apply_torque(-omega_rel * angular_friction)
-	print("angular friction ", angular_friction)
 	
+	var total_inertia = a.mass + b.mass
+	
+	a.apply_torque(omega_rel * angular_friction * total_inertia)
+	b.apply_torque(-omega_rel * angular_friction * total_inertia)
 	var omega_a_post = a.angular_velocity
 	var omega_b_post = b.angular_velocity
 	
 	var omega_post_rel = omega_b_post - omega_a_post
-	print("Omega pre: ", omega_rel, " Omega post: ", omega_post_rel)
-		
-	pass
+	var omega_post_rel_dir = sign(omega_post_rel)
+	
+	if omega_post_rel_dir == -omega_rel_dir:
+		var relative_stop_omega = (omega_a_pre + omega_b_pre + omega_a_post + omega_b_post) / 4.0
+		a.angular_velocity = relative_stop_omega
+		b.angular_velocity = relative_stop_omega
+	
