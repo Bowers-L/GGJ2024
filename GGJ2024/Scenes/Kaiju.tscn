@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://d4arnhyqsfr1t"]
+[gd_scene load_steps=23 format=3 uid="uid://d4arnhyqsfr1t"]
 
 [ext_resource type="Script" path="res://Scripts/Kaiju.gd" id="1_rbh6s"]
 [ext_resource type="Script" path="res://Scripts/SpringyPinJoint.gd" id="1_yik47"]
 [ext_resource type="Texture2D" uid="uid://brcmn175768gu" path="res://Sprites/Kaiju/Body/BODY.png" id="2_rgrj0"]
 [ext_resource type="Texture2D" uid="uid://667mjylggkm2" path="res://Sprites/Kaiju/Head/HEADNORM.png" id="3_6e2c5"]
 [ext_resource type="Texture2D" uid="uid://cphhxkyq03qii" path="res://Sprites/Kaiju/Legs/RThigh.png" id="4_vpsp5"]
+[ext_resource type="Texture2D" uid="uid://bu8t4ov702l15" path="res://Sprites/Kaiju/Body/TAIL.png" id="5_shtgs"]
 [ext_resource type="Texture2D" uid="uid://dnh3a5bwtcjl3" path="res://Sprites/Kaiju/Legs/LThigh.png" id="5_vcggf"]
 [ext_resource type="Texture2D" uid="uid://cbrq8n67i0p5r" path="res://Sprites/Kaiju/Legs/RCalf.png" id="6_iyodm"]
 [ext_resource type="Texture2D" uid="uid://dmd5cs5yv7wi5" path="res://Sprites/Kaiju/Legs/LCalf.png" id="7_jek3b"]
@@ -19,6 +20,10 @@ height = 124.766
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cn55t"]
 radius = 27.6578
 height = 116.218
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edd0i"]
+radius = 18.3714
+height = 165.836
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmu7y"]
 radius = 22.3046
@@ -88,6 +93,32 @@ position = Vector2(-31, 7)
 node_a = NodePath("../../Body")
 node_b = NodePath("..")
 script = ExtResource("1_yik47")
+unrestrained_degrees = 2
+spring_k = 20
+angular_friction = 40000.0
+
+[node name="Tail" type="RigidBody2D" parent="."]
+z_index = -6
+position = Vector2(-77, 82)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail"]
+z_index = 2
+position = Vector2(-11, 7)
+rotation = -1.99961
+shape = SubResource("CapsuleShape2D_edd0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tail"]
+position = Vector2(0, 2.00002)
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("5_shtgs")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Tail"]
+position = Vector2(75, -37)
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+script = ExtResource("1_yik47")
+target_direction = 35
 unrestrained_degrees = 2
 spring_k = 20
 angular_friction = 40000.0
