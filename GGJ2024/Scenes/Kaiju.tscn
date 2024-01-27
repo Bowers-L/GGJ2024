@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4arnhyqsfr1t"]
+[gd_scene load_steps=22 format=3 uid="uid://d4arnhyqsfr1t"]
 
 [ext_resource type="Script" path="res://Scripts/Kaiju.gd" id="1_rbh6s"]
 [ext_resource type="Script" path="res://Scripts/SpringyPinJoint.gd" id="1_yik47"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dmd5cs5yv7wi5" path="res://Sprites/Kaiju/Legs/LCalf.png" id="7_jek3b"]
 [ext_resource type="Texture2D" uid="uid://cb4q153hnxpvv" path="res://Sprites/Kaiju/Legs/RFoot.png" id="9_x4t44"]
 [ext_resource type="Texture2D" uid="uid://dqokw4yiw42y7" path="res://Sprites/Kaiju/Legs/LFoot.png" id="10_m3u2e"]
-[ext_resource type="Texture2D" uid="uid://bh0puhyhbvi05" path="res://Sprites/Kaiju/Kaiju Assembled.png" id="11_f61lc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_irb3x"]
 radius = 38.2076
@@ -277,10 +276,3 @@ shape = SubResource("CapsuleShape2D_1m25l")
 [node name="Sprite2D" type="Sprite2D" parent="Left Foot"]
 scale = Vector2(0.240436, 0.240436)
 texture = ExtResource("10_m3u2e")
-
-[node name="KaijuAssembled" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.207843)
-position = Vector2(-41, -13)
-scale = Vector2(0.535053, 0.535053)
-texture = ExtResource("11_f61lc")
-offset = Vector2(40.7941, 111.037)
