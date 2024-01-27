@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4arnhyqsfr1t"]
+[gd_scene load_steps=9 format=3 uid="uid://d4arnhyqsfr1t"]
 
+[ext_resource type="Script" path="res://Scripts/Kaiju.gd" id="1_rbh6s"]
 [ext_resource type="Script" path="res://Scripts/SpringyPinJoint.gd" id="1_yik47"]
 [ext_resource type="Script" path="res://Scripts/FrictionPinJoint2D.gd" id="2_tscmr"]
 
@@ -19,8 +20,10 @@ rough = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygqav"]
 size = Vector2(50, 50)
 
-[node name="Kaiju" type="Node2D"]
-position = Vector2(218, 123)
+[node name="Kaiju" type="Node2D" node_paths=PackedStringArray("left_foot", "right_foot")]
+script = ExtResource("1_rbh6s")
+left_foot = NodePath("Left Foot")
+right_foot = NodePath("Right Foot")
 
 [node name="Body" type="RigidBody2D" parent="."]
 position = Vector2(0, -1.52588e-05)
@@ -83,6 +86,7 @@ rotation = 0.390106
 node_a = NodePath("../../Upper Right Leg")
 node_b = NodePath("..")
 script = ExtResource("1_yik47")
+target_direction = 45
 spring_k = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lower Right Leg"]
@@ -102,6 +106,7 @@ rotation = 0.390106
 node_a = NodePath("../../Upper Left Leg")
 node_b = NodePath("..")
 script = ExtResource("1_yik47")
+target_direction = -45
 spring_k = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lower Left Leg"]

@@ -20,6 +20,7 @@ stop_event = 3
 event = SubResource("EventAsset_irc43")
 
 [node name="Kaiju" parent="." instance=ExtResource("1_t5sfb")]
+position = Vector2(108, 128)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(227, 395)
