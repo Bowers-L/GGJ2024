@@ -22,6 +22,8 @@ FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 [display]
 
 window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
@@ -88,3 +90,4 @@ settings/init_with_3d_righthanded=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
