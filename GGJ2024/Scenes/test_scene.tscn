@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=15 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/ScoreTracker.gd" id="7_dv0wa"]
 [ext_resource type="Texture2D" uid="uid://n8k2y28eylax" path="res://Sprites/Background/Background_Parallax.png" id="9_ccr6y"]
 [ext_resource type="Texture2D" uid="uid://bqdy51lavaq1e" path="res://Sprites/Background/Cloud_Cutout.png" id="10_8xajt"]
+[ext_resource type="PackedScene" uid="uid://dsbx5s18vsrj7" path="res://Scenes/Jade stuff/UI.tscn" id="11_4seb0"]
 
 [sub_resource type="EventAsset" id="EventAsset_irc43"]
 is_oneshot = true
@@ -112,3 +113,9 @@ texture = ExtResource("9_ccr6y")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ui" parent="CanvasLayer" instance=ExtResource("11_4seb0")]
+
+[connection signal="new_death_count" from="ScoreTracker" to="CanvasLayer/Ui" method="update_death_display"]
