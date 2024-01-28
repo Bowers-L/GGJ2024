@@ -17,6 +17,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	resize_collider_to_sprite()
+	var score_tracker = get_tree().root.get_child(-1).get_node("ScoreTracker")
+	connect("deaths_occurred", score_tracker._on_deaths_reported)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +27,8 @@ func _process(delta):
 	
 func area_triggered(body: Node2D):
 	call_deferred("split_or_activate")
+
+signal deaths_occurred(num: int)
 
 func split_or_activate():
 	if (break_depth > 0):
@@ -44,6 +48,8 @@ func split_or_activate():
 		
 		rb_shape.shape = shape
 		#print("Activating rb. rb collider size: ", rb_shape.size)
+	
+	emit_signal("deaths_occurred", 1)
 	
 func initialize_as_fragment(parent_frag : Building, index_x, index_y):
 	sprite.texture = parent_frag.sprite.texture

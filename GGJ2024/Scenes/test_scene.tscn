@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=11 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://t2ej6qpkurqa" path="res://Sprites/Ground_Tileable.png" id="3_qbaex"]
 [ext_resource type="PackedScene" uid="uid://dkwwbub636j0p" path="res://Scenes/Buildings/Building 2.tscn" id="4_u0p60"]
 [ext_resource type="PackedScene" uid="uid://k4fw6p34e0jf" path="res://Scenes/Buildings/Building 3.tscn" id="5_lb8kp"]
+[ext_resource type="Script" path="res://Scripts/ScoreTracker.gd" id="7_dv0wa"]
 
 [sub_resource type="EventAsset" id="EventAsset_irc43"]
 is_oneshot = true
@@ -71,3 +72,6 @@ position = Vector2(635, 340)
 
 [node name="Building3" parent="." instance=ExtResource("5_lb8kp")]
 position = Vector2(947, 345)
+
+[node name="ScoreTracker" type="Node" parent="."]
+script = ExtResource("7_dv0wa")
