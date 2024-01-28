@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5w74pvr0rr5x"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_35kvc"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+amount = 4446
+process_material = SubResource("ParticleProcessMaterial_35kvc")
