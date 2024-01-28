@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=12 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkwwbub636j0p" path="res://Scenes/Buildings/Building 2.tscn" id="4_u0p60"]
 [ext_resource type="PackedScene" uid="uid://k4fw6p34e0jf" path="res://Scenes/Buildings/Building 3.tscn" id="5_lb8kp"]
 [ext_resource type="BankAsset" uid="uid://dn8ts1fjrw14i" path="res://addons/FMOD/editor/resources/banks/{bcaf0aa4-49ec-4aa6-b6a0-ddd5dbb350ea}.tres" id="7_cyrh0"]
+[ext_resource type="Script" path="res://Scripts/ScoreTracker.gd" id="7_dv0wa"]
 
 [sub_resource type="EventAsset" id="EventAsset_irc43"]
 is_oneshot = true
@@ -78,3 +79,6 @@ load_on = 1
 unload_on = 3
 num_banks = 1
 bank_0 = ExtResource("7_cyrh0")
+
+[node name="ScoreTracker" type="Node" parent="."]
+script = ExtResource("7_dv0wa")
