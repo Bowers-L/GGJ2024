@@ -17,7 +17,7 @@ func _process(delta):
 	var height = get_viewport_rect().size.y
 	var zoom_factor = height / target_pixels
 	
-	zoom = Vector2(zoom_factor, zoom_factor)
+	#zoom = Vector2(zoom_factor, zoom_factor)
 	
 	global_position.x = kaiju_body.global_position.x
 	
