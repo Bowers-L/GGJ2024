@@ -38,7 +38,7 @@ func createLabel():
 		workingTextArray = textArray
 
 	var obj = labelObj.instantiate()
-	add_child(obj)
+	call_deferred("add_child", obj)
 	
 	obj.position.x = position.x + size.x
 	
@@ -53,3 +53,5 @@ func moveLabels(delta):
 		if (!children.passed && ((children.position.x + children.get_child(0).size.x) + (size.x / 7) < (position.x + size.x))):
 			createLabel()
 			children.passed = true;
+		if ((children.position.x + children.get_child(0).size.x) < position.x):
+			call_deferred("remove_child", children)
