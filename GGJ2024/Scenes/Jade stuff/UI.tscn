@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsbx5s18vsrj7"]
+[gd_scene load_steps=13 format=3 uid="uid://dsbx5s18vsrj7"]
 
 [ext_resource type="Script" path="res://Scenes/Jade stuff/UI.gd" id="1_oy8ig"]
 [ext_resource type="Texture2D" uid="uid://dubdmbs6nou3r" path="res://Sprites/UI/CAMtopleft.png" id="2_80773"]
@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bpi148dhbikb5" path="res://Sprites/UI/CAMbottomright.png" id="4_id307"]
 [ext_resource type="Texture2D" uid="uid://dfuh0wdkepntd" path="res://Sprites/UI/CAMbottomleft.png" id="5_tv5tm"]
 [ext_resource type="Texture2D" uid="uid://dxxk23g4xrius" path="res://Sprites/UI/LIVE.png" id="6_8ttqo"]
-[ext_resource type="Texture2D" uid="uid://bixa8p0cfwesm" path="res://Sprites/UI/UI_textbar.png" id="7_6btd2"]
+[ext_resource type="Script" path="res://Scenes/Jade stuff/LiveSign.gd" id="7_fk5wf"]
 [ext_resource type="Texture2D" uid="uid://bw2tuspcmm2q5" path="res://Sprites/UI/UI_logo.png" id="7_havja"]
+[ext_resource type="Texture2D" uid="uid://fvo4xmx4dfix" path="res://Sprites/UI/UI_headline.png" id="8_4f1v4"]
+[ext_resource type="Texture2D" uid="uid://cq8rxdfh7rg0g" path="res://Sprites/UI/UI_tickerSingle.png" id="8_wxcra"]
+[ext_resource type="Texture2D" uid="uid://c5i1f0nwtvmfd" path="res://Sprites/UI/UI_logoCard.png" id="9_i4lo1"]
+[ext_resource type="Texture2D" uid="uid://bnbdl1wnmi122" path="res://Sprites/UI/UI_scorecard.png" id="12_rexol"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -50,11 +54,13 @@ texture = ExtResource("3_qy21r")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.941
-anchor_top = 0.912
+anchor_top = 0.836
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.924
 offset_left = -0.0321045
-offset_top = 0.0239868
+offset_top = 0.271973
+offset_right = 0.00012207
+offset_bottom = 0.247986
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_id307")
@@ -62,11 +68,12 @@ texture = ExtResource("4_id307")
 [node name="CornerBottomLeft" type="TextureRect" parent="Corners"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.912
+anchor_top = 0.835
 anchor_right = 0.059
-anchor_bottom = 1.0
-offset_top = 0.0239868
+anchor_bottom = 0.923
+offset_top = -0.0800171
 offset_right = 0.0319977
+offset_bottom = -0.104004
 grow_vertical = 0
 texture = ExtResource("5_tv5tm")
 
@@ -86,21 +93,60 @@ ratio = 2.9972
 [node name="LiveSign" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("6_8ttqo")
+script = ExtResource("7_fk5wf")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="AspectRatioContainer/LiveSign"]
 autostart = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="ticker" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.021
-anchor_top = 0.002
-anchor_right = 0.977
-anchor_bottom = 0.981
-offset_left = 819.808
-offset_top = 243.704
-offset_right = -119.504
-offset_bottom = -329.688
+anchor_top = 0.927
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.303955
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_wxcra")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.124
+anchor_top = 0.784
+anchor_right = 0.872
+anchor_bottom = 0.907
+offset_left = 0.151993
+offset_top = -0.0320129
+offset_right = -0.544067
+offset_bottom = 0.263977
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_4f1v4")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_i4lo1")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.063
+anchor_top = 0.187
+anchor_right = 0.937
+anchor_bottom = 0.812
+offset_left = -0.0544024
+offset_top = 0.0319996
+offset_right = 0.0543976
+offset_bottom = 0.0319977
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_havja")
@@ -108,19 +154,47 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.021
-anchor_top = 0.002
+anchor_left = 0.859
+anchor_top = 0.037
 anchor_right = 0.977
-anchor_bottom = 0.981
-offset_left = -0.191999
-offset_top = -0.296
-offset_right = -10.504
-offset_bottom = -53.688
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_6btd2")
+anchor_bottom = 0.187
+offset_left = -0.568054
+offset_top = 0.0240002
+offset_right = -0.504028
+offset_bottom = -0.176003
+grow_horizontal = 0
+texture = ExtResource("12_rexol")
 expand_mode = 1
-stretch_mode = 5
+
+[node name="deathTollLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 2
+anchor_left = 0.037
+anchor_top = 0.093
+anchor_right = 0.956
+anchor_bottom = 0.392
+offset_left = -0.0320001
+offset_top = -0.0209999
+offset_right = -0.0160065
+offset_bottom = -0.0240021
+bbcode_enabled = true
+text = "[center][color=black][font=res://misc/ConcertOne-Regular.ttf][font_size=24]DEATH TOLL[/font_size][/font][/color][/center]"
+fit_content = true
+
+[node name="deathTollNumberLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.577
+anchor_right = 0.956
+anchor_bottom = 0.876
+offset_left = -0.0320001
+offset_top = 0.0309982
+offset_right = -0.0160065
+offset_bottom = 0.0279922
+bbcode_enabled = true
+text = "[center][color=black][font=res://misc/ConcertOne-Regular.ttf][font_size=24]DEATH TOLL[/font_size][/font][/color][/center]"
+fit_content = true
+
+[connection signal="timeout" from="AspectRatioContainer/LiveSign/Timer" to="AspectRatioContainer/LiveSign" method="_on_timer_timeout"]
