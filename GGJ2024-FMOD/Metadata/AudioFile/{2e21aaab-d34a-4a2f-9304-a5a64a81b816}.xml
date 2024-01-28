@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2e21aaab-d34a-4a2f-9304-a5a64a81b816}">
+		<property name="assetPath">
+			<value>oh no the orphans.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.1299999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9679a77a-2888-4f89-bbf1-9179629b9767}</destination>
+		</relationship>
+	</object>
+</objects>
