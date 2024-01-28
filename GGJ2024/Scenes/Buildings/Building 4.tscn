@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyb2qf5vxt1s"]
+
+[ext_resource type="PackedScene" uid="uid://c2vcp6q45nal7" path="res://Scenes/BuildingTemplate.tscn" id="1_d2qcn"]
+[ext_resource type="Texture2D" uid="uid://dkgssjdl1kxkt" path="res://Sprites/Buildings/Purple_U_Building.png" id="2_7067u"]
+
+[node name="Building" instance=ExtResource("1_d2qcn")]
+break_rows = 3
+break_cols = 4
+break_depth = 4
+
+[node name="Sprite2D" parent="RigidBody2D" index="1"]
+scale = Vector2(0.021155, 0.021155)
+texture = ExtResource("2_7067u")

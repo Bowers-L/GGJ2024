@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://k4fw6p34e0jf"]
+
+[ext_resource type="PackedScene" uid="uid://c2vcp6q45nal7" path="res://Scenes/BuildingTemplate.tscn" id="1_l0gv6"]
+[ext_resource type="Texture2D" uid="uid://cl2f15utdklmw" path="res://Sprites/Buildings/Orphanage.png" id="2_7622v"]
+
+[node name="Building" instance=ExtResource("1_l0gv6")]
+break_rows = 3
+break_cols = 4
+
+[node name="Sprite2D" parent="RigidBody2D" index="1"]
+texture = ExtResource("2_7622v")

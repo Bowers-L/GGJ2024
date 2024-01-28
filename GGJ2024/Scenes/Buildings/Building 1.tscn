@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce2poxdsllfvv"]
+
+[ext_resource type="PackedScene" uid="uid://c2vcp6q45nal7" path="res://Scenes/BuildingTemplate.tscn" id="1_sx5ew"]
+
+[node name="Building" instance=ExtResource("1_sx5ew")]
+break_rows = 3
