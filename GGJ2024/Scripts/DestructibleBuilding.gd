@@ -18,15 +18,22 @@ extends Node2D
 func _ready():
 	resize_collider_to_sprite()
 	var score_tracker = get_tree().root.get_child(-1).get_node("ScoreTracker")
+	var audio_manager = get_tree().root.get_child(-1).get_node("AudioManager")
 	connect("deaths_occurred", score_tracker._on_deaths_reported)
+	connect("building_hit", audio_manager.check_if_playable)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
+signal building_hit()
+
 func area_triggered(body: Node2D):
 	call_deferred("split_or_activate")
+	emit_signal("building_hit")
+	
 
 signal deaths_occurred(num: int)
 

@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=17 format=3 uid="uid://ci7lfspnem6mn"]
 
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_kg8mt"]
+[ext_resource type="EventAsset" uid="uid://c0a44xy58ebyh" path="res://addons/FMOD/editor/resources/events/{0e04b72c-1f3b-489a-837b-26551384d629}.tres" id="1_lh3ag"]
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
+[ext_resource type="EventAsset" uid="uid://cox82qusoq3ys" path="res://addons/FMOD/editor/resources/events/{c9a00d40-45e9-4cd7-956a-e1d6805febb6}.tres" id="2_si5nl"]
 [ext_resource type="PackedScene" uid="uid://ce2poxdsllfvv" path="res://Scenes/Buildings/Building 1.tscn" id="3_1fmwx"]
 [ext_resource type="Texture2D" uid="uid://t2ej6qpkurqa" path="res://Sprites/Ground_Tileable.png" id="3_qbaex"]
 [ext_resource type="PackedScene" uid="uid://dkwwbub636j0p" path="res://Scenes/Buildings/Building 2.tscn" id="4_u0p60"]
@@ -12,14 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bqdy51lavaq1e" path="res://Sprites/Background/Cloud_Cutout.png" id="10_8xajt"]
 [ext_resource type="PackedScene" uid="uid://dsbx5s18vsrj7" path="res://Scenes/Jade stuff/UI.tscn" id="11_4seb0"]
 
-[sub_resource type="EventAsset" id="EventAsset_irc43"]
-is_oneshot = true
-min_distance = 1.0
-max_distance = 20.0
-path = "event:/Test/Test_Event"
-guid = "{9fad0854-d8b3-479a-8d33-885f428754b9}"
-name = "Test_Event"
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nt5qn"]
 rough = true
 
@@ -28,9 +23,15 @@ size = Vector2(50, 50)
 
 [node name="TestScene" type="Node2D"]
 
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("1_kg8mt")
+event = ExtResource("2_si5nl")
+
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 2
 stop_event = 3
-event = SubResource("EventAsset_irc43")
+event = ExtResource("1_lh3ag")
+allow_fadeout = false
 
 [node name="Kaiju" parent="." instance=ExtResource("1_t5sfb")]
 position = Vector2(108, 128)
