@@ -21,18 +21,31 @@ func _unhandled_input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var leg_state_changed = false
 	if Input.is_action_just_pressed("Left Leg Up"): 
 		left_up = true
-		lift_foot(left_foot)
+		leg_state_changed = true
 	if Input.is_action_just_pressed("Right Leg Up"):
 		right_up = true
-		lift_foot(right_foot)
+		leg_state_changed = true
 	if Input.is_action_just_released("Left Leg Up"):
 		left_up = false
-		drop_foot(left_foot)
+		leg_state_changed = true
 	if Input.is_action_just_released("Right Leg Up"):
 		right_up = false
-		drop_foot(right_foot)
+		leg_state_changed = true
+		
+	if leg_state_changed:
+		if (left_up == right_up):
+			drop_foot(left_foot)
+			drop_foot(right_foot)
+		elif left_up:
+			lift_foot(left_foot)
+			drop_foot(right_foot)
+		elif right_up:
+			lift_foot(right_foot)
+			drop_foot(left_foot)
+	
 	controller_move = Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 	
 
