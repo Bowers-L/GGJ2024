@@ -1,17 +1,33 @@
-[gd_resource type="ProjectCache" load_steps=6 format=3 uid="uid://bpiut1f6n3a7t"]
+[gd_resource type="ProjectCache" load_steps=8 format=3 uid="uid://bpiut1f6n3a7t"]
 
 [ext_resource type="BankAsset" uid="uid://dn8ts1fjrw14i" path="res://addons/FMOD/editor/resources/banks/{bcaf0aa4-49ec-4aa6-b6a0-ddd5dbb350ea}.tres" id="1_gbvsm"]
 [ext_resource type="BankAsset" uid="uid://htbhbx5gksld" path="res://addons/FMOD/editor/resources/banks/{24b22a70-3897-06e4-30e9-572b2a405672}.tres" id="2_yoxvp"]
 [ext_resource type="BusAsset" uid="uid://71sl1yjq2xnq" path="res://addons/FMOD/editor/resources/busses/{403f67cc-8c0b-4f6a-b588-b642f45fd1c5}.tres" id="3_tjrsg"]
 [ext_resource type="BusAsset" uid="uid://bwx2uvf7o4ki8" path="res://addons/FMOD/editor/resources/busses/{80de0701-5629-45f1-a179-8975d76eb70d}.tres" id="4_8a75r"]
 
-[sub_resource type="EventAsset" id="EventAsset_irc43"]
+[sub_resource type="EventAsset" id="EventAsset_vdc2h"]
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/Test/Test_Event"
-guid = "{9fad0854-d8b3-479a-8d33-885f428754b9}"
-name = "Test_Event"
+path = "event:/SFX/Destruction"
+guid = "{c9a00d40-45e9-4cd7-956a-e1d6805febb6}"
+name = "Destruction"
+
+[sub_resource type="EventAsset" id="EventAsset_oq8sg"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Footstep"
+guid = "{a8465e31-5387-41d5-bc9a-fd4e00ea6514}"
+name = "Footstep"
+
+[sub_resource type="EventAsset" id="EventAsset_l5q7t"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Klunkster"
+guid = "{867a6197-331f-4e40-a6c5-b9951f6eae7f}"
+name = "Klunkster"
 
 [resource]
 banks = {
@@ -19,7 +35,9 @@ banks = {
 "{bcaf0aa4-49ec-4aa6-b6a0-ddd5dbb350ea}": ExtResource("1_gbvsm")
 }
 events = {
-"{9fad0854-d8b3-479a-8d33-885f428754b9}": SubResource("EventAsset_irc43")
+"{867a6197-331f-4e40-a6c5-b9951f6eae7f}": SubResource("EventAsset_l5q7t"),
+"{a8465e31-5387-41d5-bc9a-fd4e00ea6514}": SubResource("EventAsset_oq8sg"),
+"{c9a00d40-45e9-4cd7-956a-e1d6805febb6}": SubResource("EventAsset_vdc2h")
 }
 busses = {
 "{403f67cc-8c0b-4f6a-b588-b642f45fd1c5}": ExtResource("3_tjrsg"),
@@ -42,12 +60,24 @@ event_tree = [{
 "children": [{
 "children": [],
 "item_type": 1,
-"node_name": "Test_Event",
-"path": "event:/Test/Test_Event",
-"resource": SubResource("EventAsset_irc43")
+"node_name": "Destruction",
+"path": "event:/SFX/Destruction",
+"resource": SubResource("EventAsset_vdc2h")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "Footstep",
+"path": "event:/SFX/Footstep",
+"resource": SubResource("EventAsset_oq8sg")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "Klunkster",
+"path": "event:/SFX/Klunkster",
+"resource": SubResource("EventAsset_l5q7t")
 }],
 "item_type": 7,
-"node_name": "Test",
+"node_name": "SFX",
 "path": "",
 "resource": null
 }]

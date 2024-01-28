@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://swx5yojacvp7"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Klunkster"
+guid = "{867a6197-331f-4e40-a6c5-b9951f6eae7f}"
+name = "Klunkster"
