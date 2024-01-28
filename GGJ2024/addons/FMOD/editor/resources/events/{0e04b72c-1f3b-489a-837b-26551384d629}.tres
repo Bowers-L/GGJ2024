@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://c0a44xy58ebyh"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Music/The Builder"
+guid = "{0e04b72c-1f3b-489a-837b-26551384d629}"
+name = "The Builder"
