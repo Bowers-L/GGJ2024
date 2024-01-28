@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=15 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://k4fw6p34e0jf" path="res://Scenes/Buildings/Building 3.tscn" id="5_lb8kp"]
 [ext_resource type="BankAsset" uid="uid://dn8ts1fjrw14i" path="res://addons/FMOD/editor/resources/banks/{bcaf0aa4-49ec-4aa6-b6a0-ddd5dbb350ea}.tres" id="7_cyrh0"]
 [ext_resource type="Script" path="res://Scripts/ScoreTracker.gd" id="7_dv0wa"]
+[ext_resource type="Texture2D" uid="uid://n8k2y28eylax" path="res://Sprites/Background/Background_Parallax.png" id="9_ccr6y"]
+[ext_resource type="Texture2D" uid="uid://bqdy51lavaq1e" path="res://Sprites/Background/Cloud_Cutout.png" id="10_8xajt"]
+[ext_resource type="PackedScene" uid="uid://dsbx5s18vsrj7" path="res://Scenes/Jade stuff/UI.tscn" id="11_4seb0"]
 
 [sub_resource type="EventAsset" id="EventAsset_irc43"]
 is_oneshot = true
@@ -34,7 +37,6 @@ position = Vector2(108, 128)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("kaiju")]
 position = Vector2(279, 249)
-zoom = Vector2(1.34, 1.34)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
@@ -42,7 +44,7 @@ drag_left_margin = 0.81
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 script = ExtResource("2_fgknp")
-target_pixels = 290
+target_pixels = 500
 kaiju = NodePath("../Kaiju")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -82,3 +84,38 @@ bank_0 = ExtResource("7_cyrh0")
 
 [node name="ScoreTracker" type="Node" parent="."]
 script = ExtResource("7_dv0wa")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1215.18, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 2
+position = Vector2(0, -90)
+scale = Vector2(0.243201, 0.1413)
+texture = ExtResource("10_8xajt")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1253.05, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(-3.05176e-05, 79)
+scale = Vector2(0.250728, 0.145673)
+texture = ExtResource("9_ccr6y")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ui" parent="CanvasLayer" instance=ExtResource("11_4seb0")]
+
+[connection signal="new_death_count" from="ScoreTracker" to="CanvasLayer/Ui" method="update_death_display"]
