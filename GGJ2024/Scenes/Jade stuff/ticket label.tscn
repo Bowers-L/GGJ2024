@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://urslnyllv10n"]
+
+[ext_resource type="Script" path="res://Scenes/Jade stuff/ticket label.gd" id="1_lupdv"]
+[ext_resource type="FontFile" uid="uid://chmngilbewt3w" path="res://misc/ConcertOne-Regular.ttf" id="1_no4jm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lupdv")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_no4jm")
+theme_override_font_sizes/font_size = 32
