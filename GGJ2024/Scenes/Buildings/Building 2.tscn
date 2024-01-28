@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkwwbub636j0p"]
 
-[ext_resource type="PackedScene" uid="uid://c2vcp6q45nal7" path="res://Scenes/BuildingTemplate.tscn" id="1_pl7bj"]
+[ext_resource type="PackedScene" uid="uid://c6p08c8iqejdq" path="res://Scenes/BuildingTemplate.tscn" id="1_pl7bj"]
 [ext_resource type="Texture2D" uid="uid://drfand37wulqr" path="res://Sprites/Buildings/Indigo_Tall_Skyscraper.png" id="2_rfsuf"]
 
 [node name="Building" instance=ExtResource("1_pl7bj")]
+scale = Vector2(3.38751, 3.38751)
 break_rows = 5
 
 [node name="Sprite2D" parent="RigidBody2D" index="1"]
