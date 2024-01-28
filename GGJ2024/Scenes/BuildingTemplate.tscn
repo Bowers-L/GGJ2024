@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2vcp6q45nal7"]
+[gd_scene load_steps=5 format=3 uid="uid://c6p08c8iqejdq"]
 
 [ext_resource type="Script" path="res://Scripts/DestructibleBuilding.gd" id="1_mu0hr"]
 [ext_resource type="Texture2D" uid="uid://berwrmi4b60sf" path="res://Sprites/Buildings/Purple_Short_Skyscraper.png" id="2_uibps"]
@@ -35,5 +35,10 @@ shape = SubResource("RectangleShape2D_prhvf")
 scale = Vector2(0.024, 0.024)
 texture = ExtResource("2_uibps")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="area_triggered"]
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_collision"]
+[connection signal="timeout" from="Timer" to="." method="particle_timeout"]

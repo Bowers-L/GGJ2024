@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsbx5s18vsrj7"]
+[gd_scene load_steps=17 format=3 uid="uid://dsbx5s18vsrj7"]
 
 [ext_resource type="Script" path="res://Scenes/Jade stuff/UI.gd" id="1_oy8ig"]
 [ext_resource type="Texture2D" uid="uid://dubdmbs6nou3r" path="res://Sprites/UI/CAMtopleft.png" id="2_80773"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://fvo4xmx4dfix" path="res://Sprites/UI/UI_headline.png" id="8_4f1v4"]
 [ext_resource type="Texture2D" uid="uid://cq8rxdfh7rg0g" path="res://Sprites/UI/UI_tickerSingle.png" id="8_wxcra"]
 [ext_resource type="Texture2D" uid="uid://c5i1f0nwtvmfd" path="res://Sprites/UI/UI_logoCard.png" id="9_i4lo1"]
+[ext_resource type="Script" path="res://Scenes/Jade stuff/ticker.gd" id="9_te6py"]
 [ext_resource type="Texture2D" uid="uid://bnbdl1wnmi122" path="res://Sprites/UI/UI_scorecard.png" id="12_rexol"]
 [ext_resource type="FontFile" uid="uid://chmngilbewt3w" path="res://misc/ConcertOne-Regular.ttf" id="13_w0m21"]
 
@@ -128,6 +129,7 @@ grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("8_wxcra")
 expand_mode = 1
+script = ExtResource("9_te6py")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

@@ -37,6 +37,9 @@ func area_triggered(body: Node2D):
 
 signal deaths_occurred(num: int)
 
+func particle_timeout():
+	queue_free()
+
 func split_or_activate():
 	if (break_depth > 0):
 		for i in break_rows:
@@ -54,6 +57,7 @@ func split_or_activate():
 		shape.size.y = area_shape.shape.size.y
 		
 		rb_shape.shape = shape
+		$Timer.start(0)
 		#print("Activating rb. rb collider size: ", rb_shape.size)
 	
 	emit_signal("deaths_occurred", 1)

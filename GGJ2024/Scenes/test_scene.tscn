@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxmqivnjtqlqy"]
+[gd_scene load_steps=19 format=3 uid="uid://bxmqivnjtqlqy"]
 
 [ext_resource type="Script" path="res://Scripts/Building Spawner.gd" id="1_5r2m5"]
 [ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_kg8mt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://n8k2y28eylax" path="res://Sprites/Background/Background_Parallax.png" id="9_ccr6y"]
 [ext_resource type="Texture2D" uid="uid://bqdy51lavaq1e" path="res://Sprites/Background/Cloud_Cutout.png" id="10_8xajt"]
 [ext_resource type="PackedScene" uid="uid://dsbx5s18vsrj7" path="res://Scenes/Jade stuff/UI.tscn" id="11_4seb0"]
+[ext_resource type="Script" path="res://Scripts/Quit to Title.gd" id="16_56w8s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nt5qn"]
 rough = true
@@ -56,18 +57,19 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_nt5qn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 28)
-scale = Vector2(200, 1)
+position = Vector2(48044, 28)
+scale = Vector2(2000, 1)
 shape = SubResource("RectangleShape2D_s1mew")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 z_index = -6
 texture_repeat = 2
-position = Vector2(2635, 0)
+position = Vector2(33929, 0)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("3_qbaex")
 region_enabled = true
-region_rect = Rect2(0, 0, 32600, 344)
+region_rect = Rect2(0, 0, 326000, 344)
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="."]
 load_on = 1
@@ -115,5 +117,8 @@ centered = false
 position = Vector2(448, 285)
 script = ExtResource("1_5r2m5")
 building_options = Array[PackedScene]([ExtResource("3_1fmwx"), ExtResource("4_u0p60"), ExtResource("5_lb8kp")])
+
+[node name="Quit to Title" type="Node2D" parent="."]
+script = ExtResource("16_56w8s")
 
 [connection signal="new_death_count" from="ScoreTracker" to="CanvasLayer/Ui" method="update_death_display"]
