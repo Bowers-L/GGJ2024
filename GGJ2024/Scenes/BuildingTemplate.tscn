@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2vcp6q45nal7"]
+
+[ext_resource type="Script" path="res://Scripts/DestructibleBuilding.gd" id="1_mu0hr"]
+[ext_resource type="Texture2D" uid="uid://berwrmi4b60sf" path="res://Sprites/Buildings/Purple_Short_Skyscraper.png" id="2_uibps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdwld"]
+size = Vector2(37.055, 55.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prhvf"]
+size = Vector2(37.055, 55.8)
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_mu0hr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_kdwld")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+freeze = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_prhvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.0362698, 0.0362698)
+texture = ExtResource("2_uibps")
+
+[connection signal="body_entered" from="Area2D" to="." method="area_triggered"]
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_collision"]
