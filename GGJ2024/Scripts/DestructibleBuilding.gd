@@ -51,7 +51,7 @@ func initialize_as_fragment(parent_frag : Building, index_x, index_y):
 	sprite.vframes = parent_frag.sprite.vframes * parent_frag.break_rows
 	sprite.frame_coords.x = parent_frag.sprite.frame_coords.x * parent_frag.break_cols + index_x
 	sprite.frame_coords.y = parent_frag.sprite.frame_coords.y * parent_frag.break_rows + index_y
-	sprite.scale = parent_frag.sprite.scale
+	sprite.global_scale = parent_frag.sprite.global_scale
 	
 	#var parent_shape := parent_frag.area_shape
 	##print("Area shape size: ", area_shape.size)

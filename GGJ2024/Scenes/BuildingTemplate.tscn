@@ -32,7 +32,7 @@ visible = false
 shape = SubResource("RectangleShape2D_prhvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.0362698, 0.0362698)
+scale = Vector2(0.024, 0.024)
 texture = ExtResource("2_uibps")
 
 [connection signal="body_entered" from="Area2D" to="." method="area_triggered"]

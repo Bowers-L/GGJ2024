@@ -9,5 +9,5 @@ break_cols = 4
 break_depth = 4
 
 [node name="Sprite2D" parent="RigidBody2D" index="1"]
-scale = Vector2(0.021155, 0.021155)
+scale = Vector2(0.017, 0.017)
 texture = ExtResource("2_7067u")
