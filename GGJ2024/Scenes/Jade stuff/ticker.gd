@@ -35,7 +35,7 @@ func load_file(file):
 
 func createLabel():
 	if (workingTextArray.is_empty()):
-		workingTextArray = textArray
+		workingTextArray = textArray.duplicate()
 
 	var obj = labelObj.instantiate()
 	call_deferred("add_child", obj)

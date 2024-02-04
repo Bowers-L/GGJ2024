@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/Building Spawner.gd" id="1_5r2m5"]
 [ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_kg8mt"]
-[ext_resource type="EventAsset" uid="uid://dc6kirm1po8q5" path="res://addons/FMOD/editor/resources/events/{0e04b72c-1f3b-489a-837b-26551384d629}.tres" id="1_lh3ag"]
+[ext_resource type="EventAsset" uid="uid://c0a44xy58ebyh" path="res://addons/FMOD/editor/resources/events/{0e04b72c-1f3b-489a-837b-26551384d629}.tres" id="1_lh3ag"]
 [ext_resource type="PackedScene" uid="uid://d4arnhyqsfr1t" path="res://Scenes/Kaiju.tscn" id="1_t5sfb"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="2_fgknp"]
-[ext_resource type="EventAsset" uid="uid://4oy2h6osjkwm" path="res://addons/FMOD/editor/resources/events/{c9a00d40-45e9-4cd7-956a-e1d6805febb6}.tres" id="2_si5nl"]
+[ext_resource type="EventAsset" uid="uid://cox82qusoq3ys" path="res://addons/FMOD/editor/resources/events/{c9a00d40-45e9-4cd7-956a-e1d6805febb6}.tres" id="2_si5nl"]
 [ext_resource type="PackedScene" uid="uid://ce2poxdsllfvv" path="res://Scenes/Buildings/Building 1.tscn" id="3_1fmwx"]
 [ext_resource type="Texture2D" uid="uid://t2ej6qpkurqa" path="res://Sprites/Ground_Tileable.png" id="3_qbaex"]
 [ext_resource type="PackedScene" uid="uid://dkwwbub636j0p" path="res://Scenes/Buildings/Building 2.tscn" id="4_u0p60"]

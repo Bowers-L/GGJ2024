@@ -4,6 +4,7 @@ extends Node2D
 @export var right_foot : RigidBody2D
 @export var foot_friction := .15
 @export var controller_sensitivity := 6.0
+#@export var mouse_max_sensitivity := 
 @export var foot_range := 300.0
 
 var left_up := false
