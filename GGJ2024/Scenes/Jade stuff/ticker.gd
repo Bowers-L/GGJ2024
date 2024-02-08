@@ -9,7 +9,7 @@ var workingTextArray = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_file(file)
-	workingTextArray = textArray
+	
 	createLabel()
 
 
@@ -36,6 +36,7 @@ func load_file(file):
 func createLabel():
 	if (workingTextArray.is_empty()):
 		workingTextArray = textArray.duplicate()
+		workingTextArray.shuffle()
 
 	var obj = labelObj.instantiate()
 	call_deferred("add_child", obj)

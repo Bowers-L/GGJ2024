@@ -3,9 +3,10 @@ extends Node2D
 @export var left_foot : RigidBody2D
 @export var right_foot : RigidBody2D
 @export var foot_friction := .15
-@export var controller_sensitivity := 6.0
+@export var controller_sensitivity := 10.0
 #@export var mouse_max_sensitivity := 
 @export var foot_range := 300.0
+@export var foot_move_damp := 5.0
 
 var left_up := false
 var right_up := false
@@ -74,7 +75,7 @@ func move_foot(foot: RigidBody2D, other_foot: RigidBody2D):
 	var dot = move_direction.normalized().dot(foot_separation.normalized())
 	if foot_separation.length() > foot_range and dot > 0:
 		var overage = foot_separation.length() - foot_range
-		var damp = 1/(1+overage)
+		var damp = 1/(1+overage * foot_move_damp)
 		var damped_movement = damp * move_direction
 		move_direction = lerp(move_direction, damped_movement, dot)
 		
@@ -84,7 +85,7 @@ func move_foot(foot: RigidBody2D, other_foot: RigidBody2D):
 
 
 func _physics_process(delta):
-	
+	mouse_delta = mouse_delta if mouse_delta.length() < controller_sensitivity else controller_sensitivity * mouse_delta.normalized()
 	
 	if left_up and right_up:
 		pass
