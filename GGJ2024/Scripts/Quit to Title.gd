@@ -14,5 +14,4 @@ func _ready():
 func _process(delta):
 	pass
 	if Input.is_action_just_pressed("ui_cancel"):
-		print("trying quit")
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Jade stuff/Title Screen.tscn")

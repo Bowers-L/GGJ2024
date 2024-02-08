@@ -9,7 +9,6 @@ var curTime
 
 func update_death_display(num: int):
 	death_toll_number_label.text = str(num)
-	print(str(num))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
